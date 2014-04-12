@@ -1,7 +1,9 @@
 package com.thecherno.rain;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
@@ -65,6 +67,16 @@ public class Game extends Canvas implements Runnable{
       createBufferStrategy(3);
       return;
     }
+//    getDrawGraphics - дает связь между графическим объектом к-ому можно передать данные
+    Graphics g = bs.getDrawGraphics();
+//   задает цвет по умолчанию
+    g.setColor(Color.BLACK);
+//   заполняем окно этим цветом
+    g.fillRect(0, 0, getWidth(), getHeight());
+//  освобождает ресурсы
+    g.dispose();
+//  до этого шага данные посчитаны, но еще не размещены
+    bs.show();
   }
   
   public static void main(String[] args){
