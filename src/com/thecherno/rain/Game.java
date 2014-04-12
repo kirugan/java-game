@@ -81,7 +81,8 @@ public class Game extends Canvas implements Runnable{
       createBufferStrategy(3);
       return;
     }
-    
+//  типа проблема, в том, что он не стирает прошлые пиксели на скрине
+    screen.clear();
     screen.render();
     
     System.arraycopy(screen.pixels, 0, pixels, 0, screen.pixels.length);
