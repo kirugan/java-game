@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
@@ -21,6 +23,13 @@ public class Game extends Canvas implements Runnable{
   private JFrame frame;
 // для метода run
   private boolean running = false;
+//  final rendered view
+  private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+//  мы не можем управлять image переменной без переменной pixels - данные для картинки в image
+//  raster - структура данных (прямоугольник для данных) в графике
+//  (DataBufferInt) - каст
+//  короче pixels нужны для доступа к данным image объекта
+  private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
   
   public Game(){
     Dimension size = new Dimension(width * scale, height * scale);
