@@ -1,5 +1,6 @@
 package com.thecherno.rain;
 
+import com.thecherno.rain.graphics.Screen;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,6 +24,8 @@ public class Game extends Canvas implements Runnable{
   private JFrame frame;
 // для метода run
   private boolean running = false;
+  
+  private Screen screen;
 //  final rendered view
   private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 //  мы не можем управлять image переменной без переменной pixels - данные для картинки в image
@@ -34,6 +37,8 @@ public class Game extends Canvas implements Runnable{
   public Game(){
     Dimension size = new Dimension(width * scale, height * scale);
     setPreferredSize(size);
+    
+    screen = new Screen(width, height);
     
     frame = new JFrame();
   }
