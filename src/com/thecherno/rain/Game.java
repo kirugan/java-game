@@ -81,12 +81,18 @@ public class Game extends Canvas implements Runnable{
       createBufferStrategy(3);
       return;
     }
+    
+    screen.render();
+    
+    System.arraycopy(screen.pixels, 0, pixels, 0, screen.pixels.length);
 //    getDrawGraphics - дает связь между графическим объектом к-ому можно передать данные
     Graphics g = bs.getDrawGraphics();
 //   задает цвет по умолчанию
     g.setColor(Color.BLACK);
 //   заполняем окно этим цветом
     g.fillRect(0, 0, getWidth(), getHeight());
+    
+    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 //  освобождает ресурсы
     g.dispose();
 //  до этого шага данные посчитаны, но еще не размещены
