@@ -2,6 +2,7 @@ package com.thecherno.rain;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
@@ -44,7 +45,25 @@ public class Game extends Canvas implements Runnable{
   
   public void run(){
     while(running){
-      System.out.println("Running ...");
+//    sometimes it called tick
+//    update all logic - we will call this thing at fixed rate
+      update();
+//    we will call it fast as we can
+      render();
+    }
+  }
+  
+  public void update(){
+    
+  }
+//  делает рендеринг
+  public void render(){
+//    буффер - временное место для хранения данных | почему не кеш?)
+    BufferStrategy bs = getBufferStrategy();
+    if(bs == null){
+//    количество буфферов - 3, если больше то в принципе никаких улучшений не даст
+      createBufferStrategy(3);
+      return;
     }
   }
   
